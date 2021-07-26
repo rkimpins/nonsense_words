@@ -1,4 +1,4 @@
-
+ALPHABET="abcdefghijklmnopqrstuvwxyz"
 
 def import_word_list(filename):
 	word_list = []
@@ -9,9 +9,8 @@ def import_word_list(filename):
 	return word_list
 
 def generate_next_letter_frequencies():
-	alphabet="abcdefghijklmnopqrstuvwxyz"
 	next_letter_frequency = {}
-	for letter in alphabet:
+	for letter in ALPHABET:
 		next_letter_frequency[letter] = [0] * 26
 	print(next_letter_frequency)
 	return next_letter_frequency
@@ -25,8 +24,14 @@ def populate_next_letter_frequencies(word_list, next_letter_frequency):
 			current_letter = word[index]
 			next_letter = letter_to_index(word[index+1])
 			next_letter_frequency[current_letter][next_letter] += freq
+
+	#Normalize letter distribution
+	for letter in ALPHABET:
+		next_letter_frequency[letter] = [x/sum(next_letter_frequency[letter]) for x in next_letter_frequency[letter]]
+
 	print(next_letter_frequency)
 	return next_letter_frequency
+
 
 def main():
 	word_list = import_word_list('word_count.txt')

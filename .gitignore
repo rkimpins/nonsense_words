@@ -163,7 +163,9 @@ tags
 # Persistent undo
 [._]*.un~
 
-##Other##
-word_list.txt
 
 # End of https://www.toptal.com/developers/gitignore/api/python,vim
+
+
+##Other##
+word_count.txt
